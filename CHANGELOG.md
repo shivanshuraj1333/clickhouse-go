@@ -983,3 +983,11 @@ This release includes a guard to prevent release from being called more than onc
     - If parsing strings for datetime, datetime64 or dates we assume the locale is Local (i.e. the client) if not specified in the string.
     - The server (or column tz) is used for datetime and datetime64 rendering. For date/date32, these have no tz info in the server. For now, they will be rendered as UTC - consistent with the clickhouse-client
     - Addresses bind when no location is set
+
+- Add full support for ClickHouse Time and Time64 types, including:
+  - Protocol and column support for Time (Int32, seconds) and Time64 (Int64, sub-second, scale 0-9)
+  - Timezone-aware columns (e.g., Time('UTC'), Time64(3, 'Europe/Moscow'))
+  - Negative time values and edge case handling
+  - Comprehensive tests for all variants, including arrays, nullables, batch, and string/numeric input
+  - Parsing of all supported input formats (HH:MM:SS, numeric, negative, etc.)
+  - Documentation and usage examples
