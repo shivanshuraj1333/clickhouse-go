@@ -33,6 +33,10 @@ import (
 
 const (
 	defaultTimeFormat = "15:04:05"
+
+	// Binary encoding constants for Time types
+	binaryTypeTimeUTC          = 0x32 // Time (32-bit seconds since midnight)
+	binaryTypeTimeWithTimezone = 0x33 // Time with timezone
 )
 
 // Time implements ClickHouse Time (Int32, seconds) column with optional timezone.
